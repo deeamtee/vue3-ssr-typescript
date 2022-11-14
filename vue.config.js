@@ -1,4 +1,4 @@
-const ManifestPlugin = require("webpack-manifest-plugin");
+const { WebpackManifestPlugin } = require("webpack-manifest-plugin");
 const nodeExternals = require("webpack-node-externals");
 
 exports.chainWebpack = webpackConfig => {
@@ -18,7 +18,7 @@ exports.chainWebpack = webpackConfig => {
 
   webpackConfig
     .plugin("manifest")
-    .use(new ManifestPlugin({ fileName: "ssr-manifest.json" }));
+    .use(new WebpackManifestPlugin({ fileName: "ssr-manifest.json" }));
 
   webpackConfig.externals(nodeExternals({ allowlist: /\.(css|vue)$/ }));
 
